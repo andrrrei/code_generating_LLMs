@@ -1,8 +1,3 @@
 # Code-generating LLMs
 
-This repository contains up-to-date progress on the course work:
-1. Researched modern LLM code generation
-2. Considered the behavior of models during quantization
-3. Selected the optimal hyperparameters for passing the MBPP benchmark with different models
-4. Compared the quality of model generation in Russian and English using HumavEval and RU HumanEval
-5. The next step is to fine-tune the model for the task of finding errors in the code
+My course work consists of researching modern LLMs for automatic code generation for their training data, quality of understanding the Russian language, benchmark scores, response to prompt changes, etc. During the work, I first studied the construction of embeddings, transformer architecture, and the design of popular models (BERT family, Llama etc.), tokenizers, generation methods and methods for evaluating generative models. Then I made an approximate rating of these models based on the quality of benchmarks and read original articles about them. Afterwards I learned how to infer models in Google Colab. Next, deepseek-6.7B-instruct was chosen for a deeper study, on which I experimented: I tried to recreate the results on the MBPP and HumanEval benchmarks from the original article, tried zero-shot and few-shot, changed the system prompt, tested on the Russian version of HumanEval and experimented with quantization. 
