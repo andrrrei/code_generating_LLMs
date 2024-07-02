@@ -1,0 +1,1440 @@
+prompt,response,code,tests,result
+"from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """""" Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """"""
+","from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """""" Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    """"""
+    for i in range(len(numbers)):
+        for j in range(i + 1, len(numbers)):
+            if abs(numbers[i] - numbers[j]) < threshold:
+                return True
+    return False
+
+
+def main() -> None:
+    numbers = [1, 10, 100, 1000, 10000]
+    assert has_close_elements(numbers, 9999) is False
+    assert has_close_elements(numbers, 1000) is True
+    assert has_close_elements(numbers, 100) is True
+    assert has_close_elements(numbers, 10) is True
+    assert has_close_elements(numbers, 1) is True
+
+
+if __name__ == ""__main__"":
+    main()
+/python/tests/test_0001_0050/test","from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """""" Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    """"""
+    for i in range(len(numbers)):
+        for j in range(i + 1, len(numbers)):
+            if abs(numbers[i] - numbers[j]) < threshold:
+                return True
+    return False
+
+","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True
+    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False
+    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True
+    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False
+    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True
+    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True
+    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False
+
+",Ok
+"from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    """""" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+    >>> separate_paren_groups('( ) (( )) (( )( ))')
+    ['()', '(())', '(()())']
+    """"""
+","from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    """""" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+    """"""
+    # TODO: Implement this function
+    pass
+
+
+def test_separate_paren_groups():
+    assert separate_paren_groups(""()"") == [""()""]
+    assert separate_paren_groups(""()()"") == [""()"", ""()""]
+    assert separate_paren_groups(""(())"") == [""(())""]
+    assert separate_paren_groups(""(()())"") == [""(()())""]
+    assert separate_paren_groups(""((())())"") == [""((())())""]
+    assert separate_paren_groups(""(((())))"") == [""(((())))""]
+    assert separate_paren_groups(""(((())))()"") == [""(((())))()"", ""()""]
+    assert separate_paren_groups(""(((())))()()"") == [""(((())))()"", ""()()"", ""()""]
+    assert separate_paren_groups(""(((())))()()()"") == [""(((())))()"", ""()()"", ""()()"", ""()""]
+    assert separate_paren","from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    """""" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+    """"""
+    # TODO: Implement this function
+    pass
+
+
+def test_separate_paren_groups():
+    assert separate_paren_groups(""()"") == [""()""]
+    assert separate_paren_groups(""()()"") == [""()"", ""()""]
+    assert separate_paren_groups(""(())"") == [""(())""]
+    assert separate_paren_groups(""(()())"") == [""(()())""]
+    assert separate_paren_groups(""((())())"") == [""((())())""]
+    assert separate_paren_groups(""(((())))"") == [""(((())))""]
+    assert separate_paren_groups(""(((())))()"") == [""(((())))()"", ""()""]
+    assert separate_paren_groups(""(((())))()()"") == [""(((())))()"", ""()()"", ""()""]
+    assert separate_paren_groups(""(((())))()()()"") == [""(((())))()"", ""()()"", ""()()"", ""()""]
+    assert separate_paren","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('(()()) ((())) () ((())()())') == [
+        '(()())', '((()))', '()', '((())()())'
+    ]
+    assert candidate('() (()) ((())) (((())))') == [
+        '()', '(())', '((()))', '(((())))'
+    ]
+    assert candidate('(()(())((())))') == [
+        '(()(())((())))'
+    ]
+    assert candidate('( ) (( )) (( )( ))') == ['()', '(())', '(()())']
+",Error
+"
+
+def truncate_number(number: float) -> float:
+    """""" Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """"""
+","
+
+def truncate_number(number: float) -> float:
+    """""" Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    """"""
+    return number - math.floor(number)
+
+
+def get_random_number(min_value: float, max_value: float) -> float:
+    """""" Return a random number between min_value and max_value.
+    """"""
+    return min_value + (max_value - min_value) * random.random()
+
+
+def get_random_number_in_range(min_value: float, max_value: float) -> float:
+    """""" Return a random number between min_value and max_value.
+    """"""
+    return min_value + (max_value - min_value) * random.random()
+
+
+def get_random_number_in_range_with_precision(min_value: float, max_value: float, precision: int) -> float:
+    """""" Return a random number between min_value and max_value.
+    """"""
+    return min_value + (max_value -","def truncate_number(number: float) -> float:
+    """""" Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    """"""
+    return number - math.floor(number)
+
+
+def get_random_number(min_value: float, max_value: float) -> float:
+    """""" Return a random number between min_value and max_value.
+    """"""
+    return min_value + (max_value - min_value) * random.random()
+
+
+def get_random_number_in_range(min_value: float, max_value: float) -> float:
+    """""" Return a random number between min_value and max_value.
+    """"""
+    return min_value + (max_value - min_value) * random.random()
+
+
+def get_random_number_in_range_with_precision(min_value: float, max_value: float, precision: int) -> float:
+    """""" Return a random number between min_value and max_value.
+    """"""
+    return min_value + (max_value -","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate(3.5) == 0.5
+    assert abs(candidate(1.33) - 0.33) < 1e-6
+    assert abs(candidate(123.456) - 0.456) < 1e-6
+",Error
+"from typing import List
+
+
+def below_zero(operations: List[int]) -> bool:
+    """""" You're given a list of deposit and withdrawal operations on a bank account that starts with
+    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and
+    at that point function should return True. Otherwise it should return False.
+    >>> below_zero([1, 2, 3])
+    False
+    >>> below_zero([1, 2, -4, 5])
+    True
+    """"""
+","from typing import List
+
+
+def below_zero(operations: List[int]) -> bool:
+    """""" You're given a list of deposit and withdrawal operations on a bank account that starts with
+    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and
+    at that point function should return True. Otherwise it should return False.
+    """"""
+    balance = 0
+    for operation in operations:
+        balance += operation
+        if balance < 0:
+            return True
+    return False
+
+
+if __name__ == '__main__':
+    print(below_zero([1, 2, 3, -1, -2, -3]))
+/python/codewars/7kyu/sum_of_digits_digital_root.py
+""""""
+Digital root is the recursive sum of all the digits in a number.
+
+Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in
+this way until a single-digit number is produced. This is only applicable to the natural numbers.
+
+Here's how it works:
+
+digital_root(16)
+=> 1 + 6
+=> 7
+
+digital_root(942)
+=> 9 + 4 + 2
+=>","from typing import List
+
+
+def below_zero(operations: List[int]) -> bool:
+    """""" You're given a list of deposit and withdrawal operations on a bank account that starts with
+    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and
+    at that point function should return True. Otherwise it should return False.
+    """"""
+    balance = 0
+    for operation in operations:
+        balance += operation
+        if balance < 0:
+            return True
+    return False
+
+
+if __name__ == '__main__':
+    print(below_zero([1, 2, 3, -1, -2, -3]))
+/python/codewars/7kyu/sum_of_digits_digital_root.py
+""""""
+Digital root is the recursive sum of all the digits in a number.
+
+Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in
+this way until a single-digit number is produced. This is only applicable to the natural numbers.
+
+Here's how it works:
+
+digital_root(16)
+=> 1 + 6
+=> 7
+
+digital_root(942)
+=> 9 + 4 + 2
+=>","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([]) == False
+    assert candidate([1, 2, -3, 1, 2, -3]) == False
+    assert candidate([1, 2, -4, 5, 6]) == True
+    assert candidate([1, -1, 2, -2, 5, -5, 4, -4]) == False
+    assert candidate([1, -1, 2, -2, 5, -5, 4, -5]) == True
+    assert candidate([1, -2, 2, -2, 5, -5, 4, -4]) == True
+",Error
+"from typing import List
+
+
+def mean_absolute_deviation(numbers: List[float]) -> float:
+    """""" For a given list of input numbers, calculate Mean Absolute Deviation
+    around the mean of this dataset.
+    Mean Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (mean in this case):
+    MAD = average | x - x_mean |
+    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+    1.0
+    """"""
+","from typing import List
+
+
+def mean_absolute_deviation(numbers: List[float]) -> float:
+    """""" For a given list of input numbers, calculate Mean Absolute Deviation
+    around the mean of this dataset.
+    Mean Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (mean in this case):
+    MAD = average | x - x_mean |
+    """"""
+    mean = sum(numbers) / len(numbers)
+    return sum(abs(x - mean) for x in numbers) / len(numbers)
+
+
+def median_absolute_deviation(numbers: List[float]) -> float:
+    """""" For a given list of input numbers, calculate Median Absolute Deviation
+    around the median of this dataset.
+    Median Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (median in this case):
+    MAD = average | x - x_median |
+    """"""
+    median = sorted(numbers)[len(numbers) // 2]
+    return sum(abs(x - median) for x in numbers) / len(numbers)
+
+
+def main():
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    print(f""Mean Absolute Deviation: {mean","from typing import List
+
+
+def mean_absolute_deviation(numbers: List[float]) -> float:
+    """""" For a given list of input numbers, calculate Mean Absolute Deviation
+    around the mean of this dataset.
+    Mean Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (mean in this case):
+    MAD = average | x - x_mean |
+    """"""
+    mean = sum(numbers) / len(numbers)
+    return sum(abs(x - mean) for x in numbers) / len(numbers)
+
+
+def median_absolute_deviation(numbers: List[float]) -> float:
+    """""" For a given list of input numbers, calculate Median Absolute Deviation
+    around the median of this dataset.
+    Median Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (median in this case):
+    MAD = average | x - x_median |
+    """"""
+    median = sorted(numbers)[len(numbers) // 2]
+    return sum(abs(x - median) for x in numbers) / len(numbers)
+
+","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert abs(candidate([1.0, 2.0, 3.0]) - 2.0/3.0) < 1e-6
+    assert abs(candidate([1.0, 2.0, 3.0, 4.0]) - 1.0) < 1e-6
+    assert abs(candidate([1.0, 2.0, 3.0, 4.0, 5.0]) - 6.0/5.0) < 1e-6
+
+",Ok
+"from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """""" Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    >>> intersperse([], 4)
+    []
+    >>> intersperse([1, 2, 3], 4)
+    [1, 4, 2, 4, 3]
+    """"""
+","from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """""" Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    """"""
+    return [delimeter] + numbers + [delimeter]
+
+
+def main():
+    numbers = [1, 2, 3, 4, 5]
+    delimeter = 0
+    print(intersperse(numbers, delimeter))
+
+
+if __name__ == ""__main__"":
+    main()
+/python/leetcode/easy/136_single_number.py
+from typing import List
+
+
+def single_number(nums: List[int]) -> int:
+    """"""
+    Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+    """"""
+    return 2 * sum(set(nums)) - sum(nums)
+
+
+def main():
+    nums = [2, 2, 1]
+    print(single_number(nums))
+
+
+if __name__ == ""__main__"":
+    main()
+/python/leetcode/easy/125","from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """""" Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    """"""
+    return [delimeter] + numbers + [delimeter]
+
+","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([], 7) == []
+    assert candidate([5, 6, 3, 2], 8) == [5, 8, 6, 8, 3, 8, 2]
+    assert candidate([2, 2, 2], 2) == [2, 2, 2, 2, 2]
+",Error
+"from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """""" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """"""
+","from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """""" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    """"""
+    # TODO: Implement this function
+    pass
+
+
+def test_parse_nested_parens():
+    assert parse_nested_parens(""()"") == [0]
+    assert parse_nested_parens(""()()"") == [0, 0]
+    assert parse_nested_parens(""(()())"") == [0, 1]
+    assert parse_nested_parens(""((())())"") == [0, 1, 2]
+    assert parse_nested_parens(""(((())))"") == [0, 1, 2, 3]
+    assert parse_nested_parens(""(((())))()"") == [0, 1, 2, 3, 0]
+    assert parse_nested_parens(""(((())))()()"") == [0, 1, 2, 3, 0, 0]
+    assert parse_nested_parens(""(((())))()","from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """""" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    """"""
+    # TODO: Implement this function
+    pass
+
+
+def test_parse_nested_parens():
+    assert parse_nested_parens(""()"") == [0]
+    assert parse_nested_parens(""()()"") == [0, 0]
+    assert parse_nested_parens(""(()())"") == [0, 1]
+    assert parse_nested_parens(""((())())"") == [0, 1, 2]
+    assert parse_nested_parens(""(((())))"") == [0, 1, 2, 3]
+    assert parse_nested_parens(""(((())))()"") == [0, 1, 2, 3, 0]
+    assert parse_nested_parens(""(((())))()()"") == [0, 1, 2, 3, 0, 0]
+    assert parse_nested_parens(""(((())))()","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('(()()) ((())) () ((())()())') == [2, 3, 1, 3]
+    assert candidate('() (()) ((())) (((())))') == [1, 2, 3, 4]
+    assert candidate('(()(())((())))') == [4]
+",Error
+"from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """"""
+","from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given substring
+    """"""
+    return [s for s in strings if substring in s]
+
+
+def filter_by_substring_with_regex(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given substring
+    """"""
+    return [s for s in strings if re.search(substring, s)]
+
+
+def filter_by_substring_with_regex_and_flags(strings: List[str], substring: str, flags: int) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given substring
+    """"""
+    return [s for s in strings if re.search(substring, s, flags)]
+
+
+def filter_by_substring_with_regex_and_flags_and_groups(strings: List[str], substring: str, flags: int, groups: int) -> List[str]:
+    """""" Filter an input list of strings only","from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given substring
+    """"""
+    return [s for s in strings if substring in s]
+
+
+def filter_by_substring_with_regex(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given substring
+    """"""
+    return [s for s in strings if re.search(substring, s)]
+
+
+def filter_by_substring_with_regex_and_flags(strings: List[str], substring: str, flags: int) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given substring
+    """"""
+    return [s for s in strings if re.search(substring, s, flags)]
+
+
+def filter_by_substring_with_regex_and_flags_and_groups(strings: List[str], substring: str, flags: int, groups: int) -> List[str]:
+    """""" Filter an input list of strings only","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([], 'john') == []
+    assert candidate(['xxx', 'asd', 'xxy', 'john doe', 'xxxAAA', 'xxx'], 'xxx') == ['xxx', 'xxxAAA', 'xxx']
+    assert candidate(['xxx', 'asd', 'aaaxxy', 'john doe', 'xxxAAA', 'xxx'], 'xx') == ['xxx', 'aaaxxy', 'xxxAAA', 'xxx']
+    assert candidate(['grunt', 'trumpet', 'prune', 'gruesome'], 'run') == ['grunt', 'prune']
+",Error
+"from typing import List, Tuple
+
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    """""" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
+    Empty sum should be equal to 0 and empty product should be equal to 1.
+    >>> sum_product([])
+    (0, 1)
+    >>> sum_product([1, 2, 3, 4])
+    (10, 24)
+    """"""
+","from typing import List, Tuple
+
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    """""" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
+    Empty sum should be equal to 0 and empty product should be equal to 1.
+    """"""
+    return sum(numbers), reduce(lambda x, y: x * y, numbers, 1)
+
+
+if __name__ == '__main__':
+    print(sum_product([1, 2, 3, 4]))
+    print(sum_product([1, 2, 3, 4, 5]))
+    print(sum_product([]))
+    print(sum_product([1]))
+/01_intro/01_strings/01_strings.py
+""""""
+Given a string, return a new string where ""not "" has been added to the front.
+However, if the string already begins with ""not"", return the string unchanged.
+""""""
+
+
+def not_string(str: str) -> str:
+    if str.startswith(""not""):
+        return str
+    return ""not "" + str
+
+
+if __name__ == '__main__':
+    print(not_string(""not bad""))","from typing import List, Tuple
+
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    """""" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
+    Empty sum should be equal to 0 and empty product should be equal to 1.
+    """"""
+    return sum(numbers), reduce(lambda x, y: x * y, numbers, 1)
+
+
+if __name__ == '__main__':
+    print(sum_product([1, 2, 3, 4]))
+    print(sum_product([1, 2, 3, 4, 5]))
+    print(sum_product([]))
+    print(sum_product([1]))
+/01_intro/01_strings/01_strings.py
+""""""
+Given a string, return a new string where ""not "" has been added to the front.
+However, if the string already begins with ""not"", return the string unchanged.
+""""""
+
+
+def not_string(str: str) -> str:
+    if str.startswith(""not""):
+        return str
+    return ""not "" + str
+
+
+if __name__ == '__main__':
+    print(not_string(""not bad""))","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([]) == (0, 1)
+    assert candidate([1, 1, 1]) == (3, 1)
+    assert candidate([100, 0]) == (100, 0)
+    assert candidate([3, 5, 7]) == (3 + 5 + 7, 3 * 5 * 7)
+    assert candidate([10]) == (10, 10)
+",Error
+"from typing import List, Tuple
+
+
+def rolling_max(numbers: List[int]) -> List[int]:
+    """""" From a given list of integers, generate a list of rolling maximum element found until given moment
+    in the sequence.
+    >>> rolling_max([1, 2, 3, 2, 3, 4, 2])
+    [1, 2, 3, 3, 3, 4, 4]
+    """"""
+","from typing import List, Tuple
+
+
+def rolling_max(numbers: List[int]) -> List[int]:
+    """""" From a given list of integers, generate a list of rolling maximum element found until given moment
+    in the sequence.
+    """"""
+    max_so_far = numbers[0]
+    rolling_max = [max_so_far]
+    for number in numbers[1:]:
+        if number > max_so_far:
+            max_so_far = number
+        rolling_max.append(max_so_far)
+    return rolling_max
+
+
+def rolling_min(numbers: List[int]) -> List[int]:
+    """""" From a given list of integers, generate a list of rolling minimum element found until given moment
+    in the sequence.
+    """"""
+    min_so_far = numbers[0]
+    rolling_min = [min_so_far]
+    for number in numbers[1:]:
+        if number < min_so_far:
+            min_so_far = number
+        rolling_min.append(min_so_far)
+    return rolling_min
+
+
+def rolling_max_min(numbers: List[int]) -> List[Tuple","from typing import List, Tuple
+
+
+def rolling_max(numbers: List[int]) -> List[int]:
+    """""" From a given list of integers, generate a list of rolling maximum element found until given moment
+    in the sequence.
+    """"""
+    max_so_far = numbers[0]
+    rolling_max = [max_so_far]
+    for number in numbers[1:]:
+        if number > max_so_far:
+            max_so_far = number
+        rolling_max.append(max_so_far)
+    return rolling_max
+
+
+def rolling_min(numbers: List[int]) -> List[int]:
+    """""" From a given list of integers, generate a list of rolling minimum element found until given moment
+    in the sequence.
+    """"""
+    min_so_far = numbers[0]
+    rolling_min = [min_so_far]
+    for number in numbers[1:]:
+        if number < min_so_far:
+            min_so_far = number
+        rolling_min.append(min_so_far)
+    return rolling_min
+
+
+def rolling_max_min(numbers: List[int]) -> List[Tuple","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([]) == []
+    assert candidate([1, 2, 3, 4]) == [1, 2, 3, 4]
+    assert candidate([4, 3, 2, 1]) == [4, 4, 4, 4]
+    assert candidate([3, 2, 3, 100, 3]) == [3, 3, 3, 100, 100]
+",Error
+"
+
+def is_palindrome(string: str) -> bool:
+    """""" Test if given string is a palindrome """"""
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """""" Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    >>> make_palindrome('')
+    ''
+    >>> make_palindrome('cat')
+    'catac'
+    >>> make_palindrome('cata')
+    'catac'
+    """"""
+","
+
+def is_palindrome(string: str) -> bool:
+    """""" Test if given string is a palindrome """"""
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """""" Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    """"""
+    # Find the longest palindromic suffix of the string
+    suffix = find_longest_palindromic_suffix(string)
+    # Reverse the prefix of the string
+    prefix = string[:len(string) - len(suffix)][::-1]
+    # Return the palindrome
+    return prefix + string + suffix
+
+
+def find_longest_palindromic_suffix(string: str) -> str:
+    """""" Find the longest palindromic suffix of a string """"""
+    # Start with the empty string
+    longest_suffix = """"
+    # Iterate over all possible suffixes
+    for i in range(len(string)):
+        # Test if the suffix is a palindrome
+        if is_palindrome(string[i:]):
+            # If it is, save it as the longest
+            longest_suffix = string[i:]
+    # Return the longest suffix
+    return longest_suffix
+
+
+def main():
+    """""" Main function """"""
+    # Read","def is_palindrome(string: str) -> bool:
+    """""" Test if given string is a palindrome """"""
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """""" Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    """"""
+    # Find the longest palindromic suffix of the string
+    suffix = find_longest_palindromic_suffix(string)
+    # Reverse the prefix of the string
+    prefix = string[:len(string) - len(suffix)][::-1]
+    # Return the palindrome
+    return prefix + string + suffix
+
+
+def find_longest_palindromic_suffix(string: str) -> str:
+    """""" Find the longest palindromic suffix of a string """"""
+    # Start with the empty string
+    longest_suffix = """"
+    # Iterate over all possible suffixes
+    for i in range(len(string)):
+        # Test if the suffix is a palindrome
+        if is_palindrome(string[i:]):
+            # If it is, save it as the longest
+            longest_suffix = string[i:]
+    # Return the longest suffix
+    return longest_suffix
+
+","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('') == ''
+    assert candidate('x') == 'x'
+    assert candidate('xyz') == 'xyzyx'
+    assert candidate('xyx') == 'xyx'
+    assert candidate('jerry') == 'jerryrrej'
+",Error
+"from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """""" Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """"""
+","from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """""" Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    """"""
+    return """".join(str(int(x) ^ int(y)) for x, y in zip(a, b))
+
+
+def string_xor_list(a: List[str], b: List[str]) -> List[str]:
+    """""" Input are two lists of strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a list of strings.
+    """"""
+    return [string_xor(x, y) for x, y in zip(a, b)]
+
+
+def string_xor_list_2(a: List[str], b: List[str]) -> List[str]:
+    """""" Input are two lists of strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a list of strings.
+    """"""
+    return ["""".join(str(int(x) ^ int","from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """""" Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    """"""
+    return """".join(str(int(x) ^ int(y)) for x, y in zip(a, b))
+
+
+def string_xor_list(a: List[str], b: List[str]) -> List[str]:
+    """""" Input are two lists of strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a list of strings.
+    """"""
+    return [string_xor(x, y) for x, y in zip(a, b)]
+
+
+def string_xor_list_2(a: List[str], b: List[str]) -> List[str]:
+    """""" Input are two lists of strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a list of strings.
+    """"""
+    return ["""".join(str(int(x) ^ int","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('111000', '101010') == '010010'
+    assert candidate('1', '1') == '0'
+    assert candidate('0101', '0000') == '0101'
+",Error
+"from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """""" Out of list of strings, return the longest one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    >>> longest([])
+
+    >>> longest(['a', 'b', 'c'])
+    'a'
+    >>> longest(['a', 'bb', 'ccc'])
+    'ccc'
+    """"""
+","from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """""" Out of list of strings, return the longest one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    """"""
+    if not strings:
+        return None
+    longest_string = strings[0]
+    for string in strings:
+        if len(string) > len(longest_string):
+            longest_string = string
+    return longest_string
+
+
+def test_longest():
+    assert longest([""a"", ""b"", ""c""]) == ""c""
+    assert longest([""a"", ""b"", ""c"", ""d""]) == ""d""
+    assert longest([""a"", ""b"", ""c"", ""d"", ""e""]) == ""e""
+    assert longest([""a"", ""b"", ""c"", ""d"", ""e"", ""f""]) == ""f""
+    assert longest([""a"", ""b"", ""c"", ""d"", ""e"", ""f"", ""g""]) == ""g""
+    assert longest([""a"", ""b"", ""c"", ""d"", ""e"", ""f"", ""g"", ""h""]) == ""h""
+    assert longest([""a","from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """""" Out of list of strings, return the longest one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    """"""
+    if not strings:
+        return None
+    longest_string = strings[0]
+    for string in strings:
+        if len(string) > len(longest_string):
+            longest_string = string
+    return longest_string
+
+
+def test_longest():
+    assert longest([""a"", ""b"", ""c""]) == ""c""
+    assert longest([""a"", ""b"", ""c"", ""d""]) == ""d""
+    assert longest([""a"", ""b"", ""c"", ""d"", ""e""]) == ""e""
+    assert longest([""a"", ""b"", ""c"", ""d"", ""e"", ""f""]) == ""f""
+    assert longest([""a"", ""b"", ""c"", ""d"", ""e"", ""f"", ""g""]) == ""g""
+    assert longest([""a"", ""b"", ""c"", ""d"", ""e"", ""f"", ""g"", ""h""]) == ""h""
+    assert longest([""a","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([]) == None
+    assert candidate(['x', 'y', 'z']) == 'x'
+    assert candidate(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'
+",Error
+"
+
+def greatest_common_divisor(a: int, b: int) -> int:
+    """""" Return a greatest common divisor of two integers a and b
+    >>> greatest_common_divisor(3, 5)
+    1
+    >>> greatest_common_divisor(25, 15)
+    5
+    """"""
+","
+
+def greatest_common_divisor(a: int, b: int) -> int:
+    """""" Return a greatest common divisor of two integers a and b
+    """"""
+    if a == 0:
+        return b
+    return greatest_common_divisor(b % a, a)
+
+def least_common_multiple(a: int, b: int) -> int:
+    """""" Return a least common multiple of two integers a and b
+    """"""
+    return a * b // greatest_common_divisor(a, b)
+
+def main():
+    """""" Main function
+    """"""
+    print(greatest_common_divisor(12, 18))
+    print(least_common_multiple(12, 18))
+
+if __name__ == '__main__':
+    main()
+/python/0001-0100/0010-0019/0012-0019/0015.py
+#!/usr/bin/env python3
+
+def main():
+    """""" Main function
+    """"""
+    print(sum","def greatest_common_divisor(a: int, b: int) -> int:
+    """""" Return a greatest common divisor of two integers a and b
+    """"""
+    if a == 0:
+        return b
+    return greatest_common_divisor(b % a, a)
+
+def least_common_multiple(a: int, b: int) -> int:
+    """""" Return a least common multiple of two integers a and b
+    """"""
+    return a * b // greatest_common_divisor(a, b)
+","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate(3, 7) == 1
+    assert candidate(10, 15) == 5
+    assert candidate(49, 14) == 7
+    assert candidate(144, 60) == 12
+",Error
+"from typing import List
+
+
+def all_prefixes(string: str) -> List[str]:
+    """""" Return list of all prefixes from shortest to longest of the input string
+    >>> all_prefixes('abc')
+    ['a', 'ab', 'abc']
+    """"""
+","from typing import List
+
+
+def all_prefixes(string: str) -> List[str]:
+    """""" Return list of all prefixes from shortest to longest of the input string
+    """"""
+    return [string[:i] for i in range(1, len(string) + 1)]
+
+
+def all_suffixes(string: str) -> List[str]:
+    """""" Return list of all suffixes from shortest to longest of the input string
+    """"""
+    return [string[i:] for i in range(len(string))]
+
+
+def all_substrings(string: str) -> List[str]:
+    """""" Return list of all substrings from shortest to longest of the input string
+    """"""
+    return [string[i:j] for i in range(len(string)) for j in range(i + 1, len(string) + 1)]
+
+
+def all_substrings_with_duplicates(string: str) -> List[str]:
+    """""" Return list of all substrings from shortest to longest of the input string,
+    including duplicates
+    """"""
+    return [string[i:j] for i in range","from typing import List
+
+
+def all_prefixes(string: str) -> List[str]:
+    """""" Return list of all prefixes from shortest to longest of the input string
+    """"""
+    return [string[:i] for i in range(1, len(string) + 1)]
+
+
+def all_suffixes(string: str) -> List[str]:
+    """""" Return list of all suffixes from shortest to longest of the input string
+    """"""
+    return [string[i:] for i in range(len(string))]
+
+
+def all_substrings(string: str) -> List[str]:
+    """""" Return list of all substrings from shortest to longest of the input string
+    """"""
+    return [string[i:j] for i in range(len(string)) for j in range(i + 1, len(string) + 1)]
+
+
+def all_substrings_with_duplicates(string: str) -> List[str]:
+    """""" Return list of all substrings from shortest to longest of the input string,
+    including duplicates
+    """"""
+    return [string[i:j] for i in range","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('') == []
+    assert candidate('asdfgh') == ['a', 'as', 'asd', 'asdf', 'asdfg', 'asdfgh']
+    assert candidate('WWW') == ['W', 'WW', 'WWW']
+",Error
+"
+
+def string_sequence(n: int) -> str:
+    """""" Return a string containing space-delimited numbers starting from 0 upto n inclusive.
+    >>> string_sequence(0)
+    '0'
+    >>> string_sequence(5)
+    '0 1 2 3 4 5'
+    """"""
+","
+
+def string_sequence(n: int) -> str:
+    """""" Return a string containing space-delimited numbers starting from 0 upto n inclusive.
+    """"""
+    return "" "".join(str(i) for i in range(n+1))
+
+def string_sequence_with_step(n: int, step: int) -> str:
+    """""" Return a string containing space-delimited numbers starting from 0 upto n inclusive, with step.
+    """"""
+    return "" "".join(str(i) for i in range(0, n+1, step))
+
+def string_sequence_with_step_and_start(n: int, step: int, start: int) -> str:
+    """""" Return a string containing space-delimited numbers starting from start upto n inclusive, with step.
+    """"""
+    return "" "".join(str(i) for i in range(start, n+1, step))
+
+def string_sequence_with_step_and_start_and_end(n: int, step: int, start: int, end: int","def string_sequence(n: int) -> str:
+    """""" Return a string containing space-delimited numbers starting from 0 upto n inclusive.
+    """"""
+    return "" "".join(str(i) for i in range(n+1))
+
+def string_sequence_with_step(n: int, step: int) -> str:
+    """""" Return a string containing space-delimited numbers starting from 0 upto n inclusive, with step.
+    """"""
+    return "" "".join(str(i) for i in range(0, n+1, step))
+
+def string_sequence_with_step_and_start(n: int, step: int, start: int) -> str:
+    """""" Return a string containing space-delimited numbers starting from start upto n inclusive, with step.
+    """"""
+    return "" "".join(str(i) for i in range(start, n+1, step))
+
+def string_sequence_with_step_and_start_and_end(n: int, step: int, start: int, end: int","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate(0) == '0'
+    assert candidate(3) == '0 1 2 3'
+    assert candidate(10) == '0 1 2 3 4 5 6 7 8 9 10'
+",Error
+"
+
+def count_distinct_characters(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    >>> count_distinct_characters('xyzXYZ')
+    3
+    >>> count_distinct_characters('Jerry')
+    4
+    """"""
+","
+
+def count_distinct_characters(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+    return len(set(string.lower()))
+
+def count_distinct_characters_2(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+    return len(set(string.lower()))
+
+def count_distinct_characters_3(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+    return len(set(string.lower()))
+
+def count_distinct_characters_4(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+    return len(set(string.lower()))
+
+def count_distinct_characters_5(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (","def count_distinct_characters(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+    return len(set(string.lower()))
+
+def count_distinct_characters_2(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+    return len(set(string.lower()))
+
+def count_distinct_characters_3(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+    return len(set(string.lower()))
+
+def count_distinct_characters_4(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+    return len(set(string.lower()))
+
+def count_distinct_characters_5(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('') == 0
+    assert candidate('abcde') == 5
+    assert candidate('abcde' + 'cade' + 'CADE') == 5
+    assert candidate('aaaaAAAAaaaa') == 1
+    assert candidate('Jerry jERRY JeRRRY') == 5
+",Error
+"from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """""" Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+
+    >>> parse_music('o o| .| o| o| .| .| .| .| o o')
+    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+    """"""
+","from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """""" Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+
+    """"""
+    return [4, 2, 1]
+
+
+def parse_music_test():
+    assert parse_music(""o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|","from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """""" Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+
+    """"""
+    return [4, 2, 1]
+
+
+def parse_music_test():
+    assert parse_music(""o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('') == []
+    assert candidate('o o o o') == [4, 4, 4, 4]
+    assert candidate('.| .| .| .|') == [1, 1, 1, 1]
+    assert candidate('o| o| .| .| o o o o') == [2, 2, 1, 1, 4, 4, 4, 4]
+    assert candidate('o| .| o| .| o o| o o|') == [2, 1, 2, 1, 4, 2, 4, 2]
+",Error
+"
+
+def how_many_times(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count overlaping cases.
+    >>> how_many_times('', 'a')
+    0
+    >>> how_many_times('aaa', 'a')
+    3
+    >>> how_many_times('aaaa', 'aa')
+    3
+    """"""
+","
+
+def how_many_times(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count overlaping cases.
+    """"""
+    return len(re.findall(substring, string))
+
+def how_many_times_with_re(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count overlaping cases.
+    """"""
+    return len(re.findall(substring, string, re.DOTALL))
+
+def how_many_times_with_re_and_flags(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count overlaping cases.
+    """"""
+    return len(re.findall(substring, string, re.DOTALL | re.MULTILINE))
+
+def how_many_times_with_re_and_flags_and_groups(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string","def how_many_times(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count overlaping cases.
+    """"""
+    return len(re.findall(substring, string))
+
+def how_many_times_with_re(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count overlaping cases.
+    """"""
+    return len(re.findall(substring, string, re.DOTALL))
+
+def how_many_times_with_re_and_flags(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count overlaping cases.
+    """"""
+    return len(re.findall(substring, string, re.DOTALL | re.MULTILINE))
+
+def how_many_times_with_re_and_flags_and_groups(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('', 'x') == 0
+    assert candidate('xyxyxyx', 'x') == 4
+    assert candidate('cacacacac', 'cac') == 4
+    assert candidate('john doe', 'john') == 1
+",Error
+"from typing import List
+
+
+def sort_numbers(numbers: str) -> str:
+    """""" Input is a space-delimited string of numberals from 'zero' to 'nine'.
+    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.
+    Return the string with numbers sorted from smallest to largest
+    >>> sort_numbers('three one five')
+    'one three five'
+    """"""
+","from typing import List
+
+
+def sort_numbers(numbers: str) -> str:
+    """""" Input is a space-delimited string of numberals from 'zero' to 'nine'.
+    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five','six','seven', 'eight' and 'nine'.
+    Return the string with numbers sorted from smallest to largest
+    """"""
+    # TODO: Implement this function
+    # HINT: Use the built-in sorted() function
+    # HINT: Use the.split() method to split the string into a list of numbers
+    # HINT: Use the.join() method to join the list of numbers back into a string
+    # HINT: Use the.replace() method to replace the numberals with their integer equivalents
+    # HINT: Use the.sort() method to sort the list of numbers
+    # HINT: Use the.join() method to join the list of numbers back into a string
+    # HINT: Use the.replace() method to replace the integer equivalents with their numberals
+    # HINT: Use the.replace() method to replace the spaces with nothing
+    # HINT: Use the.replace() method to replace the commas with spaces
+    # HINT: Use the.replace() method to replace the periods with nothing
+    # HINT: Use the.","from typing import List
+
+
+def sort_numbers(numbers: str) -> str:
+    """""" Input is a space-delimited string of numberals from 'zero' to 'nine'.
+    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five','six','seven', 'eight' and 'nine'.
+    Return the string with numbers sorted from smallest to largest
+    """"""
+    # TODO: Implement this function
+    # HINT: Use the built-in sorted() function
+    # HINT: Use the.split() method to split the string into a list of numbers
+    # HINT: Use the.join() method to join the list of numbers back into a string
+    # HINT: Use the.replace() method to replace the numberals with their integer equivalents
+    # HINT: Use the.sort() method to sort the list of numbers
+    # HINT: Use the.join() method to join the list of numbers back into a string
+    # HINT: Use the.replace() method to replace the integer equivalents with their numberals
+    # HINT: Use the.replace() method to replace the spaces with nothing
+    # HINT: Use the.replace() method to replace the commas with spaces
+    # HINT: Use the.replace() method to replace the periods with nothing
+    # HINT: Use the.","
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate('') == ''
+    assert candidate('three') == 'three'
+    assert candidate('three five nine') == 'three five nine'
+    assert candidate('five zero four seven nine eight') == 'zero four five seven eight nine'
+    assert candidate('six five four three two one zero') == 'zero one two three four five six'
+",Error
